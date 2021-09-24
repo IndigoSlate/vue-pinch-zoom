@@ -4,14 +4,14 @@
             <slot></slot>
         </div>
 
-        <div class="pz-zoom-button pz-zoom-control-position-bottom" v-if="isControl()" v-bind:class="{'pz-zoom-button-out': isZoomedIn}" v-on:click="toggleZoom()"></div>
+        <button class="pz-zoom-button pz-zoom-control-position-bottom" v-if="isControl()" v-bind:class="{'pz-zoom-button-out': isZoomedIn}" @click="toggleZoom()"></button>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { IvyPinch } from '../ivypinch';
-import { Properties } from '../interfaces'; 
+import { Properties } from '../interfaces';
 import { defaultProperties } from '../properties';
 
 @Component
@@ -166,70 +166,67 @@ export default class PinchZoom extends Vue {
 .pinch-zoom-content
     height: inherit
 
-.pz-dragging 
+.pz-dragging
     cursor: all-scroll
 
 /* Zoom button */
-.pz-zoom-button 
+.pz-zoom-button
+    border: none
     position:  absolute
     z-index: 1000
     color: #fff
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgc3R5bGU9IiI+PHJlY3QgaWQ9ImJhY2tncm91bmRyZWN0IiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4PSIwIiB5PSIwIiBmaWxsPSJub25lIiBzdHJva2U9Im5vbmUiLz48ZyBjbGFzcz0iY3VycmVudExheWVyIiBzdHlsZT0iIj48dGl0bGU+TGF5ZXIgMTwvdGl0bGU+PHBhdGggZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0MxNS40MSAxMi41OSAxNiAxMS4xMSAxNiA5LjUgMTYgNS45MSAxMy4wOSAzIDkuNSAzUzMgNS45MSAzIDkuNSA1LjkxIDE2IDkuNSAxNmMxLjYxIDAgMy4wOS0uNTkgNC4yMy0xLjU3bC4yNy4yOHYuNzlsNSA0Ljk5TDIwLjQ5IDE5bC00Ljk5LTV6bS02IDBDNy4wMSAxNCA1IDExLjk5IDUgOS41UzcuMDEgNSA5LjUgNSAxNCA3LjAxIDE0IDkuNSAxMS45OSAxNCA5LjUgMTR6IiBpZD0ic3ZnXzEiIGNsYXNzPSIiIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMSIvPjxwYXRoIGQ9Ik0xMiAxMGgtMnYySDl2LTJIN1Y5aDJWN2gxdjJoMnYxeiIgaWQ9InN2Z18zIiBjbGFzcz0iIiBmaWxsPSIjZmZmZmZmIiBmaWxsLW9wYWNpdHk9IjEiLz48L2c+PC9zdmc+), url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCI+PHJlY3QgaWQ9ImJhY2tncm91bmRyZWN0IiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB4PSIwIiB5PSIwIiBmaWxsPSJub25lIiBzdHJva2U9Im5vbmUiLz48ZyBjbGFzcz0iY3VycmVudExheWVyIiBzdHlsZT0iIj48dGl0bGU+TGF5ZXIgMTwvdGl0bGU+PHBhdGggZD0iTTE1LjUgMTRoLS43OWwtLjI4LS4yN0MxNS40MSAxMi41OSAxNiAxMS4xMSAxNiA5LjUgMTYgNS45MSAxMy4wOSAzIDkuNSAzUzMgNS45MSAzIDkuNSA1LjkxIDE2IDkuNSAxNmMxLjYxIDAgMy4wOS0uNTkgNC4yMy0xLjU3bC4yNy4yOHYuNzlsNSA0Ljk5TDIwLjQ5IDE5bC00Ljk5LTV6bS02IDBDNy4wMSAxNCA1IDExLjk5IDUgOS41UzcuMDEgNSA5LjUgNSAxNCA3LjAxIDE0IDkuNSAxMS45OSAxNCA5LjUgMTR6TTcgOWg1djFIN3oiIGlkPSJzdmdfMiIgY2xhc3M9IiIgZmlsbD0iI2ZmZmZmZiIgZmlsbC1vcGFjaXR5PSIxIi8+PC9nPjwvc3ZnPg==)
-    background-color: rgba(0, 0, 0, .8)
+    background-color: rgba(0, 0, 0, 1)
     background-position: center, -1000px
     background-repeat: no-repeat, no-repeat
-    background-size: 40px
-    width: 56px
-    height: 56px
-    border-radius: 4px
-    opacity: 0.5
+    background-size: 2rem
+    width: 3rem
+    height: 3rem
+    border-radius: 2px
     cursor: pointer
     transition: opacity .1s
     user-select: none
 
-.pz-zoom-button-out 
+.pz-zoom-button-out
     background-position: -1000px, center
 
-.pz-zoom-button:hover 
-    opacity: 0.7
-
-.pz-zoom-button.pz-zoom-control-position-right 
+.pz-zoom-button.pz-zoom-control-position-right
     right: 16px
     top: 50%
     margin-top: -28px
 
-.pz-zoom-button.pz-zoom-control-position-right-bottom 
+.pz-zoom-button.pz-zoom-control-position-right-bottom
     right: 16px
     bottom: 32px
 
-.pz-zoom-button.pz-zoom-control-position-bottom 
+.pz-zoom-button.pz-zoom-control-position-bottom
     bottom: 16px
     left: 50%
     margin-left: -28px
 
 /* Zoom control */
-.pz-zoom-control 
+.pz-zoom-control
     position: absolute
     background-color: rgba(0, 0, 0, .8)
     border-radius: 4px
     overflow: hidden
 
-.pz-zoom-control.pz-zoom-control-position-right 
+.pz-zoom-control.pz-zoom-control-position-right
     right: 16px
     top: 50%
     margin-top: -48px
 
-.pz-zoom-control.pz-zoom-control-position-right-bottom 
+.pz-zoom-control.pz-zoom-control-position-right-bottom
     right: 16px
     bottom: 32px
 
-.pz-zoom-control.pz-zoom-control-position-bottom 
+.pz-zoom-control.pz-zoom-control-position-bottom
     bottom: 16px
     left: 50%
     margin-left: -48px
 
 .pz-zoom-in,
-.pz-zoom-out 
+.pz-zoom-out
     width: 48px
     height: 48px
     background-position: center
@@ -237,19 +234,10 @@ export default class PinchZoom extends Vue {
     opacity: 1
     cursor: pointer
 
-.pz-zoom-in:hover,
-.pz-zoom-out:hover 
-    background-color: rgba(255, 255, 255, 0.2)
-
 .pz-zoom-control-position-bottom .pz-zoom-in,
-.pz-zoom-control-position-bottom .pz-zoom-out 
+.pz-zoom-control-position-bottom .pz-zoom-out
     float: right
 
-.pz-disabled 
-    opacity: 0.5
-    cursor: default
 
-.pz-disabled:hover 
-    background-color: rgba(255, 255, 255, 0)
 
 </style>
